@@ -1,0 +1,4751 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Ellenex for developers",
+    "description": "Ellenex v1 api documentation\n\n# Authentication\n\n<!-- ReDoc-Inject: <security-definitions> -->",
+    "contact": {
+      "name": "Ellenex Developer Portal",
+      "url": "https://api.ellenex.net",
+      "email": "developer@ellenex.com"
+    },
+    "version": "1.0.0",
+    "x-logo": {
+      "url": "http://api.ellenex.net/logo.png",
+      "altText": "Ellenex logo"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://api.ellenex.net/v1",
+      "description": "Ellenex v1 api server"
+    }
+  ],
+  "x-tagGroups": [
+    {
+      "name": "Device Inventory",
+      "tags": ["edi-v1"]
+    },
+    {
+      "name": "Alerts & Notifications",
+      "tags": ["eara-v1", "edna-v1"]
+    },
+    {
+      "name": "Data Processing",
+      "tags": ["edpa-v1", "edsa-v1"]
+    },
+    {
+      "name": "User & Subscription Management",
+      "tags": ["esma-v1"]
+    },
+    {
+      "name": "Webhook-API",
+      "tags": ["Webhook-API"]
+    }
+  ],
+  "paths": {
+    "/ewa/webhooks": {
+      "get": {
+        "tags": ["Webhook-API"],
+        "summary": "Get Webhook",
+        "operationId": "GetWebhook",
+        "parameters": [
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "x-api-key"
+            }
+          },
+          {
+            "name": "x-lnx-token",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "x-lnx-token"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/GetWebhook"
+                    },
+                    {
+                      "example": {
+                        "items": [
+                          {
+                            "id": "80753835-6d3f-47a4-a3c1-2e3a047b135e",
+                            "subscription": "50d0d30e-68d9-4480-af86-666575274179",
+                            "url": "https://658607a55dbb405c8068248e573143ce.api.mockbin.io",
+                            "headers": null,
+                            "retry_count": 3,
+                            "is_suppressed": false,
+                            "created_by": "6b6e3561-67f8-424b-93f0-6ce6d3f05c08",
+                            "created_at": "2024-03-06T15:44:24.501367288Z"
+                          },
+                          {
+                            "id": "fa978c7e-a555-4616-b684-75d49aa7ecb8",
+                            "subscription": "50d0d30e-68d9-4480-af86-666575274179",
+                            "url": "https://ellenex-webhook.free.beeceptor.com/todos",
+                            "headers": null,
+                            "retry_count": 1,
+                            "is_suppressed": true,
+                            "created_by": "6b6e3561-67f8-424b-93f0-6ce6d3f05c08",
+                            "created_at": "2024-03-06T16:49:21.839990655Z",
+                            "updated_by": "6b6e3561-67f8-424b-93f0-6ce6d3f05c08",
+                            "updated_at": "2024-03-07T06:57:53.972234214Z"
+                          },
+                          {
+                            "id": "1dc3d2cb-40c7-4323-986f-153c79341a30",
+                            "subscription": "50d0d30e-68d9-4480-af86-666575274179",
+                            "url": "https://5a2c11x0-faed-4f62-80da-b41862019d06.api.mockbin.io",
+                            "headers": null,
+                            "retry_count": 3,
+                            "is_suppressed": false,
+                            "created_by": "6b6e3561-67f8-424b-93f0-6ce6d3f05c08",
+                            "created_at": "2024-03-08T00:04:29.747115547Z"
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                },
+                "example": {
+                  "items": [
+                    {
+                      "id": "80753835-6d3f-47a4-a3c1-2e3a047b135e",
+                      "subscription": "50d0d30e-68d9-4480-af86-666575274179",
+                      "url": "https://658607a55dbb405c8068248e573143ce.api.mockbin.io",
+                      "headers": null,
+                      "retry_count": 3,
+                      "is_suppressed": false,
+                      "created_by": "6b6e3561-67f8-424b-93f0-6ce6d3f05c08",
+                      "created_at": "2024-03-06T15:44:24.501367288Z"
+                    },
+                    {
+                      "id": "fa978c7e-a555-4616-b684-75d49aa7ecb8",
+                      "subscription": "50d0d30e-68d9-4480-af86-666575274179",
+                      "url": "https://ellenex-webhook.free.beeceptor.com/todos",
+                      "headers": null,
+                      "retry_count": 1,
+                      "is_suppressed": true,
+                      "created_by": "6b6e3561-67f8-424b-93f0-6ce6d3f05c08",
+                      "created_at": "2024-03-06T16:49:21.839990655Z",
+                      "updated_by": "6b6e3561-67f8-424b-93f0-6ce6d3f05c08",
+                      "updated_at": "2024-03-07T06:57:53.972234214Z"
+                    },
+                    {
+                      "id": "1dc3d2cb-40c7-4323-986f-153c79341a30",
+                      "subscription": "50d0d30e-68d9-4480-af86-666575274179",
+                      "url": "https://5a2c11x0-faed-4f62-80da-b41862019d06.api.mockbin.io",
+                      "headers": null,
+                      "retry_count": 3,
+                      "is_suppressed": false,
+                      "created_by": "6b6e3561-67f8-424b-93f0-6ce6d3f05c08",
+                      "created_at": "2024-03-08T00:04:29.747115547Z"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      },
+      "post": {
+        "tags": ["Webhook-API"],
+        "summary": "Create Webhook",
+        "operationId": "CreateWebhook",
+        "parameters": [
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "x-api-key"
+            }
+          },
+          {
+            "name": "x-lnx-token",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "x-lnx-token"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CreateWebhookRequest"
+                  },
+                  {
+                    "example": {
+                      "url": "https://2a2c11x0-faed-4f62-80da-b41862019d06.api.mockbin.io",
+                      "headers": {
+                        "test": "1",
+                        "test2": "2"
+                      },
+                      "retry_count": 3
+                    }
+                  }
+                ]
+              },
+              "example": {
+                "url": "https://2a2c11x0-faed-4f62-80da-b41862019d06.api.mockbin.io",
+                "headers": {
+                  "test": "1",
+                  "test2": "2"
+                },
+                "retry_count": 3
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CreateWebhook"
+                    },
+                    {
+                      "example": {
+                        "id": "a60886b2-808d-4dda-bcde-7d8239720739",
+                        "subscription": "50d0d30e-68d9-4480-af86-666575274179",
+                        "url": "https://2a2c11x0-faed-4f62-80da-b41862019d06.api.mockbin.io",
+                        "headers": {
+                          "test": "1",
+                          "test2": "2"
+                        },
+                        "retry_count": 3,
+                        "is_suppressed": false,
+                        "created_by": "6b6e3561-67f8-424b-93f0-6ce6d3f05c08",
+                        "created_at": "2024-03-08T02:29:56.65214508Z"
+                      }
+                    }
+                  ]
+                },
+                "example": {
+                  "id": "a60886b2-808d-4dda-bcde-7d8239720739",
+                  "subscription": "50d0d30e-68d9-4480-af86-666575274179",
+                  "url": "https://2a2c11x0-faed-4f62-80da-b41862019d06.api.mockbin.io",
+                  "headers": {
+                    "test": "1",
+                    "test2": "2"
+                  },
+                  "retry_count": 3,
+                  "is_suppressed": false,
+                  "created_by": "6b6e3561-67f8-424b-93f0-6ce6d3f05c08",
+                  "created_at": "2024-03-08T02:29:56.65214508Z"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/ewa/webhooks/{id}": {
+      "get": {
+        "tags": ["Webhook-API"],
+        "summary": "Get Webhook Details",
+        "operationId": "GetWebhookDetails",
+        "parameters": [
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "x-api-key"
+            }
+          },
+          {
+            "name": "x-lnx-token",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "x-lnx-token"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id of User to view details",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/GetWebhookDetails"
+                    },
+                    {
+                      "example": {
+                        "id": "fa978c7e-a555-4616-b684-75d49aa7ecb8",
+                        "subscription": "50d0d30e-68d9-4480-af86-666575274179",
+                        "url": "https://ellenex-webhook.free.beeceptor.com/todos",
+                        "headers": null,
+                        "retry_count": 1,
+                        "is_suppressed": true,
+                        "created_by": "6b6e3561-67f8-424b-93f0-6ce6d3f05c08",
+                        "created_at": "2024-03-06T16:49:21.839990655Z",
+                        "updated_by": "6b6e3561-67f8-424b-93f0-6ce6d3f05c08",
+                        "updated_at": "2024-03-07T06:57:53.972234214Z"
+                      }
+                    }
+                  ]
+                },
+                "example": {
+                  "id": "fa978c7e-a555-4616-b684-75d49aa7ecb8",
+                  "subscription": "50d0d30e-68d9-4480-af86-666575274179",
+                  "url": "https://ellenex-webhook.free.beeceptor.com/todos",
+                  "headers": null,
+                  "retry_count": 1,
+                  "is_suppressed": true,
+                  "created_by": "6b6e3561-67f8-424b-93f0-6ce6d3f05c08",
+                  "created_at": "2024-03-06T16:49:21.839990655Z",
+                  "updated_by": "6b6e3561-67f8-424b-93f0-6ce6d3f05c08",
+                  "updated_at": "2024-03-07T06:57:53.972234214Z"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      },
+      "put": {
+        "tags": ["Webhook-API"],
+        "summary": "Update Webhook",
+        "operationId": "UpdateWebhook",
+        "parameters": [
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "x-api-key"
+            }
+          },
+          {
+            "name": "x-lnx-token",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "x-lnx-token"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id of User to update",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/UpdateWebhookRequest"
+                  },
+                  {
+                    "example": {
+                      "url": "https://ellenex-webhook.free.beeceptor.com/todos",
+                      "retry_count": 3
+                    }
+                  }
+                ]
+              },
+              "example": {
+                "url": "https://ellenex-webhook.free.beeceptor.com/todos",
+                "retry_count": 3
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/UpdateWebhook"
+                    },
+                    {
+                      "example": {
+                        "id": "9cfc68b9-e216-4629-a154-053e4f4f55b7",
+                        "subscription": "50d0d30e-68d9-4480-af86-666575274179",
+                        "url": "https://ellenex-webhook.free.beeceptor.com/todos",
+                        "headers": null,
+                        "retry_count": 3,
+                        "is_suppressed": false,
+                        "created_by": "6b6e3561-67f8-424b-93f0-6ce6d3f05c08",
+                        "created_at": "2024-03-08T02:37:05.307226951Z",
+                        "updated_by": "6b6e3561-67f8-424b-93f0-6ce6d3f05c08",
+                        "updated_at": "2024-03-08T03:03:27.021188864Z"
+                      }
+                    }
+                  ]
+                },
+                "example": {
+                  "id": "9cfc68b9-e216-4629-a154-053e4f4f55b7",
+                  "subscription": "50d0d30e-68d9-4480-af86-666575274179",
+                  "url": "https://ellenex-webhook.free.beeceptor.com/todos",
+                  "headers": null,
+                  "retry_count": 3,
+                  "is_suppressed": false,
+                  "created_by": "6b6e3561-67f8-424b-93f0-6ce6d3f05c08",
+                  "created_at": "2024-03-08T02:37:05.307226951Z",
+                  "updated_by": "6b6e3561-67f8-424b-93f0-6ce6d3f05c08",
+                  "updated_at": "2024-03-08T03:03:27.021188864Z"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      },
+      "delete": {
+        "tags": ["Webhook-API"],
+        "summary": "Delete Webhook",
+        "operationId": "DeleteWebhook",
+        "parameters": [
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "x-api-key"
+            }
+          },
+          {
+            "name": "x-lnx-token",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "x-lnx-token"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id of User to delete",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/DeleteWebhook"
+                    },
+                    {
+                      "example": {
+                        "message": "Deleted successfully",
+                        "timestamp": "2024-03-08T02:36:12.391133282Z"
+                      }
+                    }
+                  ]
+                },
+                "example": {
+                  "message": "Deleted successfully",
+                  "timestamp": "2024-03-08T02:36:12.391133282Z"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/ewa/trigger": {
+      "get": {
+        "tags": ["Webhook-API"],
+        "summary": "Get Trigger",
+        "operationId": "GetTrigger",
+        "parameters": [
+          {
+            "name": "webhook_id",
+            "in": "query",
+            "description": "Required user's wehook-id to view trigger details",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "webhook_id"
+            }
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "description": "View order from ASC or DESC",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "ASC"
+            }
+          },
+          {
+            "name": "from_date",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "2024-03-06T17:24:26.215286045Z"
+            }
+          },
+          {
+            "name": "to_date",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "2024-03-08T02:54:25.847477035Z"
+            }
+          },
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "x-api-key"
+            }
+          },
+          {
+            "name": "x-lnx-token",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "x-lnx-token"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/GetTrigger"
+                    },
+                    {
+                      "example": {
+                        "items": [
+                          {
+                            "id": "8093d973-0726-4f67-9361-d23c10853cfb",
+                            "subscription": "50d0d30e-68d9-4480-af86-666575274179",
+                            "webhook_id": "fa978c7e-a555-4616-b684-75d49aa7ecb8",
+                            "status": "FAILED",
+                            "retries": 4,
+                            "created_by": "SYSTEM_SNS",
+                            "created_at": "2024-03-06T17:19:24.554530788Z",
+                            "update_by": "SYSTEM_SNS",
+                            "updated_at": "2024-03-06T17:29:27.025202084Z"
+                          },
+                          {
+                            "id": "fa369c7a-b8a8-4f7a-a5d7-f293ab988cd9",
+                            "subscription": "50d0d30e-68d9-4480-af86-666575274179",
+                            "webhook_id": "fa978c7e-a555-4616-b684-75d49aa7ecb8",
+                            "status": "FAILED",
+                            "retries": 4,
+                            "created_by": "SYSTEM_SNS",
+                            "created_at": "2024-03-06T17:19:15.785483112Z",
+                            "update_by": "SYSTEM_SNS",
+                            "updated_at": "2024-03-06T17:29:27.026863171Z"
+                          },
+                          {
+                            "id": "a1815f1e-4206-4d56-b788-a06a1f9ca6d7",
+                            "subscription": "50d0d30e-68d9-4480-af86-666575274179",
+                            "webhook_id": "fa978c7e-a555-4616-b684-75d49aa7ecb8",
+                            "status": "FAILED",
+                            "retries": 4,
+                            "created_by": "SYSTEM_SNS",
+                            "created_at": "2024-03-06T17:18:45.647524635Z",
+                            "update_by": "SYSTEM_SNS",
+                            "updated_at": "2024-03-06T17:29:26.801804923Z"
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                },
+                "example": {
+                  "items": [
+                    {
+                      "id": "8093d973-0726-4f67-9361-d23c10853cfb",
+                      "subscription": "50d0d30e-68d9-4480-af86-666575274179",
+                      "webhook_id": "fa978c7e-a555-4616-b684-75d49aa7ecb8",
+                      "status": "FAILED",
+                      "retries": 4,
+                      "created_by": "SYSTEM_SNS",
+                      "created_at": "2024-03-06T17:19:24.554530788Z",
+                      "update_by": "SYSTEM_SNS",
+                      "updated_at": "2024-03-06T17:29:27.025202084Z"
+                    },
+                    {
+                      "id": "fa369c7a-b8a8-4f7a-a5d7-f293ab988cd9",
+                      "subscription": "50d0d30e-68d9-4480-af86-666575274179",
+                      "webhook_id": "fa978c7e-a555-4616-b684-75d49aa7ecb8",
+                      "status": "FAILED",
+                      "retries": 4,
+                      "created_by": "SYSTEM_SNS",
+                      "created_at": "2024-03-06T17:19:15.785483112Z",
+                      "update_by": "SYSTEM_SNS",
+                      "updated_at": "2024-03-06T17:29:27.026863171Z"
+                    },
+                    {
+                      "id": "a1815f1e-4206-4d56-b788-a06a1f9ca6d7",
+                      "subscription": "50d0d30e-68d9-4480-af86-666575274179",
+                      "webhook_id": "fa978c7e-a555-4616-b684-75d49aa7ecb8",
+                      "status": "FAILED",
+                      "retries": 4,
+                      "created_by": "SYSTEM_SNS",
+                      "created_at": "2024-03-06T17:18:45.647524635Z",
+                      "update_by": "SYSTEM_SNS",
+                      "updated_at": "2024-03-06T17:29:26.801804923Z"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/ewa/trigger/{trigger_id}": {
+      "get": {
+        "tags": ["Webhook-API"],
+        "summary": "Get Trigger Details",
+        "operationId": "GetTriggerDetails",
+        "parameters": [
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "x-api-key"
+            }
+          },
+          {
+            "name": "x-lnx-token",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "x-lnx-token"
+            }
+          },
+          {
+            "name": "trigger_id",
+            "in": "path",
+            "description": "User trigger_id to view details",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/GetTriggerDetails"
+                    },
+                    {
+                      "example": {
+                        "id": "0da811e7-e1ce-4787-8239-ebf699196570",
+                        "subscription": "50d0d30e-68d9-4480-af86-666575274179",
+                        "webhook_id": "9cfc68b9-e216-4629-a154-053e4f4f55b7",
+                        "webhook": {
+                          "id": "9cfc68b9-e216-4629-a154-053e4f4f55b7",
+                          "subscription": "50d0d30e-68d9-4480-af86-666575274179",
+                          "url": "https://2a2c11x0-faed-4f62-80da-b41862019d06.api.mockbin.io",
+                          "headers": null,
+                          "retry_count": 3,
+                          "is_suppressed": false,
+                          "created_by": "6b6e3561-67f8-424b-93f0-6ce6d3f05c08",
+                          "created_at": "2024-03-08T02:37:05.307226951Z"
+                        },
+                        "status": "FAILED",
+                        "retries": 4,
+                        "trigger_logs": [
+                          {
+                            "response_body": "{\n  \"type\": \"https://httpproblems.com/http-status/400\",\n  \"title\": \"Bad Request\",\n  \"status\": 400,\n  \"instance\": \"/2a2c11x0-faed-4f62-80da-b41862019d06\",\n  \"trace\": {\n    \"timestamp\": \"2024-03-08T02:38:45.775Z\",\n    \"requestId\": \"13fea9c6-77a0-4a66-93ca-25e23ba28ac4\",\n    \"buildId\": \"fb9c10b8-f38c-4e4a-b370-97cfa502edb9\",\n    \"rayId\": \"860f736ef9d83adb\"\n  }\n}",
+                            "status_code": 400
+                          },
+                          {
+                            "response_body": "{\n  \"type\": \"https://httpproblems.com/http-status/400\",\n  \"title\": \"Bad Request\",\n  \"status\": 400,\n  \"instance\": \"/2a2c11x0-faed-4f62-80da-b41862019d06\",\n  \"trace\": {\n    \"timestamp\": \"2024-03-08T02:39:25.658Z\",\n    \"requestId\": \"59aafc77-888a-444b-971b-57c3b345b297\",\n    \"buildId\": \"fb9c10b8-f38c-4e4a-b370-97cfa502edb9\",\n    \"rayId\": \"860f7468e87d3b59\"\n  }\n}",
+                            "status_code": 400
+                          },
+                          {
+                            "response_body": "{\n  \"type\": \"https://httpproblems.com/http-status/400\",\n  \"title\": \"Bad Request\",\n  \"status\": 400,\n  \"instance\": \"/2a2c11x0-faed-4f62-80da-b41862019d06\",\n  \"trace\": {\n    \"timestamp\": \"2024-03-08T02:44:25.662Z\",\n    \"requestId\": \"a33421fa-271a-4eb5-9f47-dfa063139a43\",\n    \"buildId\": \"fb9c10b8-f38c-4e4a-b370-97cfa502edb9\",\n    \"rayId\": \"860f7bbac83a28a4\"\n  }\n}",
+                            "status_code": 400
+                          },
+                          {
+                            "error": "Maximum number of retries exceeded"
+                          }
+                        ],
+                        "body": [
+                          {
+                            "DeviceId": "6d832f32-5975-4a70-bb74-c45c2571be58",
+                            "DeviceSerial": "70B3D5CD04000009",
+                            "Parameters": [
+                              {
+                                "level": 0.64
+                              },
+                              {
+                                "temperature": 23.62
+                              },
+                              {
+                                "chargelevel": 3.52
+                              }
+                            ],
+                            "Timestamp": "2024-03-08T02:38:43.256999969Z"
+                          }
+                        ],
+                        "created_by": "SYSTEM_SNS",
+                        "created_at": "2024-03-08T02:38:45.538360739Z",
+                        "update_by": "SYSTEM_SNS",
+                        "updated_at": "2024-03-08T02:49:25.600135755Z"
+                      }
+                    }
+                  ]
+                },
+                "example": {
+                  "id": "0da811e7-e1ce-4787-8239-ebf699196570",
+                  "subscription": "50d0d30e-68d9-4480-af86-666575274179",
+                  "webhook_id": "9cfc68b9-e216-4629-a154-053e4f4f55b7",
+                  "webhook": {
+                    "id": "9cfc68b9-e216-4629-a154-053e4f4f55b7",
+                    "subscription": "50d0d30e-68d9-4480-af86-666575274179",
+                    "url": "https://2a2c11x0-faed-4f62-80da-b41862019d06.api.mockbin.io",
+                    "headers": null,
+                    "retry_count": 3,
+                    "is_suppressed": false,
+                    "created_by": "6b6e3561-67f8-424b-93f0-6ce6d3f05c08",
+                    "created_at": "2024-03-08T02:37:05.307226951Z"
+                  },
+                  "status": "FAILED",
+                  "retries": 4,
+                  "trigger_logs": [
+                    {
+                      "response_body": "{\n  \"type\": \"https://httpproblems.com/http-status/400\",\n  \"title\": \"Bad Request\",\n  \"status\": 400,\n  \"instance\": \"/2a2c11x0-faed-4f62-80da-b41862019d06\",\n  \"trace\": {\n    \"timestamp\": \"2024-03-08T02:38:45.775Z\",\n    \"requestId\": \"13fea9c6-77a0-4a66-93ca-25e23ba28ac4\",\n    \"buildId\": \"fb9c10b8-f38c-4e4a-b370-97cfa502edb9\",\n    \"rayId\": \"860f736ef9d83adb\"\n  }\n}",
+                      "status_code": 400
+                    },
+                    {
+                      "response_body": "{\n  \"type\": \"https://httpproblems.com/http-status/400\",\n  \"title\": \"Bad Request\",\n  \"status\": 400,\n  \"instance\": \"/2a2c11x0-faed-4f62-80da-b41862019d06\",\n  \"trace\": {\n    \"timestamp\": \"2024-03-08T02:39:25.658Z\",\n    \"requestId\": \"59aafc77-888a-444b-971b-57c3b345b297\",\n    \"buildId\": \"fb9c10b8-f38c-4e4a-b370-97cfa502edb9\",\n    \"rayId\": \"860f7468e87d3b59\"\n  }\n}",
+                      "status_code": 400
+                    },
+                    {
+                      "response_body": "{\n  \"type\": \"https://httpproblems.com/http-status/400\",\n  \"title\": \"Bad Request\",\n  \"status\": 400,\n  \"instance\": \"/2a2c11x0-faed-4f62-80da-b41862019d06\",\n  \"trace\": {\n    \"timestamp\": \"2024-03-08T02:44:25.662Z\",\n    \"requestId\": \"a33421fa-271a-4eb5-9f47-dfa063139a43\",\n    \"buildId\": \"fb9c10b8-f38c-4e4a-b370-97cfa502edb9\",\n    \"rayId\": \"860f7bbac83a28a4\"\n  }\n}",
+                      "status_code": 400
+                    },
+                    {
+                      "error": "Maximum number of retries exceeded"
+                    }
+                  ],
+                  "body": [
+                    {
+                      "DeviceId": "6d832f32-5975-4a70-bb74-c45c2571be58",
+                      "DeviceSerial": "70B3D5CD04000009",
+                      "Parameters": [
+                        {
+                          "level": 0.64
+                        },
+                        {
+                          "temperature": 23.62
+                        },
+                        {
+                          "chargelevel": 3.52
+                        }
+                      ],
+                      "Timestamp": "2024-03-08T02:38:43.256999969Z"
+                    }
+                  ],
+                  "created_by": "SYSTEM_SNS",
+                  "created_at": "2024-03-08T02:38:45.538360739Z",
+                  "update_by": "SYSTEM_SNS",
+                  "updated_at": "2024-03-08T02:49:25.600135755Z"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/users": {
+      "get": {
+        "tags": ["esma-v1"],
+        "summary": "List all users",
+        "operationId": "listUsers",
+        "responses": {
+          "200": {
+            "description": "A paged collection of users",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Users"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["esma-v1"],
+        "summary": "Create user using JSON",
+        "operationId": "createUsers",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created User in JSON format",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/{userId}": {
+      "get": {
+        "tags": ["esma-v1"],
+        "summary": "Retrieve a specific user",
+        "operationId": "getUserById",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "description": "Id of a user to retrieve",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": ["esma-v1"],
+        "summary": "Update a specific user",
+        "operationId": "updateUserById",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "description": "Id of a user to update",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Updated user",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["esma-v1"],
+        "summary": "Delete a specific user",
+        "operationId": "deleteUserById",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "description": "Id of a user to delete",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success"
+          },
+          "default": {
+            "description": "Unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/subscriptions": {
+      "get": {
+        "tags": ["esma-v1"],
+        "summary": "List all subscriptions",
+        "operationId": "listSubscriptions",
+        "responses": {
+          "200": {
+            "description": "A paged collection of all subscriptions",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Subscriptions"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["esma-v1"],
+        "summary": "Create subscription using JSON",
+        "operationId": "createSubscription",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Subscription"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created subscription in JSON format",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Subscription"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}": {
+      "get": {
+        "tags": ["esma-v1"],
+        "summary": "Retrieve a specific user",
+        "operationId": "getSubscriptionById",
+        "parameters": [
+          {
+            "name": "subscriptionId",
+            "in": "path",
+            "required": true,
+            "description": "Id of a subscription to retrieve",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Subscription"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": ["esma-v1"],
+        "summary": "Update a specific subscription",
+        "operationId": "updateSubscriptionById",
+        "parameters": [
+          {
+            "name": "subscriptionId",
+            "in": "path",
+            "required": true,
+            "description": "Id of a subscription to update",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Subscription"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Updated subscription",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Subscription"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/observations": {
+      "post": {
+        "tags": ["edsa-v1"],
+        "summary": "Create observation data point(s).",
+        "operationId": "createObservation",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Observation"
+              }
+            },
+            "application/csv": {
+              "schema": {
+                "type": "string"
+              },
+              "example": "device,parameter,result,resultTime,latitude,longitude,altitude,tags\n/v1/edi/devices/uuid,pressure,3000,2018-10-20T18:51:13+00:00,-137.5,245.678,34.546,unit=pal,range=2\n/v1/edi/devices/uuid,temperature,34,2018-10-20T18:51:13+00:00,-137.765,245.988,34.6,unit=cel,accuracy=0.01\n"
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Added observation in JSON format (or a collection of observations in case of CSV request)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/Observation"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "totalItems": {
+                          "type": "number",
+                          "format": "int64",
+                          "example": 1
+                        },
+                        "member": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/Observation"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/observations/eql": {
+      "post": {
+        "tags": ["edsa-v1"],
+        "summary": "Query raw and aggregated data using EllenexQL.",
+        "operationId": "eqlObservations",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EQL"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "A JSON object containing queried data.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EQLResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/forecasts": {
+      "post": {
+        "tags": ["edsa-v1"],
+        "summary": "Create forecast data point(s).",
+        "operationId": "createForecast",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Forecast"
+              }
+            },
+            "application/csv": {
+              "schema": {
+                "type": "string"
+              },
+              "example": "device,parameter,result,resultTime,latitude,longitude,altitude,tags\n/v1/edi/devices/uuid,pressure,3000,2018-10-20T18:51:13+00:00,-137.5,245.678,34.546,unit=pal,range=2\n/v1/edi/devices/uuid,temperature,34,2018-10-20T18:51:13+00:00,-137.765,245.988,34.6,unit=cel,accuracy=0.01\n"
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Added observation in JSON format (or a collection of forecasts in case of CSV request)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/Forecast"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "totalItems": {
+                          "type": "number",
+                          "format": "int64",
+                          "example": 1
+                        },
+                        "member": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/Forecast"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/forecasts/eql": {
+      "post": {
+        "tags": ["edsa-v1"],
+        "summary": "Query raw and aggregated data using EllenexQL.",
+        "operationId": "eqlForecasts",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EQL"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "A JSON object containing queried data.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EQLResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/notifications": {
+      "post": {
+        "tags": ["edna-v1"],
+        "summary": "Send a notification",
+        "operationId": "createNotifications",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Notification"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created notification in JSON format",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Notification"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/templates": {
+      "get": {
+        "tags": ["edna-v1"],
+        "summary": "List all templates",
+        "operationId": "listTemplates",
+        "responses": {
+          "200": {
+            "description": "A collection of templates",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Templates"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["edna-v1"],
+        "summary": "Create a template",
+        "operationId": "createTemplates",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Template"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created template in JSON format",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Template"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/templates/{templateId}": {
+      "get": {
+        "tags": ["edna-v1"],
+        "summary": "Retrieve a specific template",
+        "operationId": "getTemplateById",
+        "parameters": [
+          {
+            "name": "templateId",
+            "in": "path",
+            "required": true,
+            "description": "The id of the template to retrieve",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An template",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Template"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": ["edna-v1"],
+        "summary": "Update a specific template",
+        "operationId": "updateTemplateById",
+        "parameters": [
+          {
+            "name": "templateId",
+            "in": "path",
+            "required": true,
+            "description": "The id of the template to update",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Template"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Updated template",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Template"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["edna-v1"],
+        "summary": "Delete a specific template",
+        "operationId": "removeTemplateById",
+        "parameters": [
+          {
+            "name": "templateId",
+            "in": "path",
+            "required": true,
+            "description": "The id of the template to delete",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "description": "Unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/alerts": {
+      "get": {
+        "tags": ["eara-v1"],
+        "summary": "List all alerts",
+        "operationId": "listAlerts",
+        "parameters": [
+          {
+            "name": "device",
+            "in": "query",
+            "required": false,
+            "description": "The id of the device to retrieve all alerts defined for",
+            "schema": {
+              "type": "string",
+              "example": "/v1/edi/devices/uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A collection of alerts",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Alerts"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["eara-v1"],
+        "summary": "Create an alert",
+        "operationId": "createAlerts",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Alert"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created alert in JSON format",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Alert"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/alerts/{alertId}": {
+      "get": {
+        "tags": ["eara-v1"],
+        "summary": "Retrieve a specific alert",
+        "operationId": "getAlertById",
+        "parameters": [
+          {
+            "name": "alertId",
+            "in": "path",
+            "required": true,
+            "description": "The id of the alert to retrieve",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An alert",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Alert"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": ["eara-v1"],
+        "summary": "Update a specific alert",
+        "operationId": "updateAlertById",
+        "parameters": [
+          {
+            "name": "alertId",
+            "in": "path",
+            "required": true,
+            "description": "The id of the alert to update",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Alert"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Updated alert",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Alert"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["eara-v1"],
+        "summary": "Delete a specific alert",
+        "operationId": "removeAlertById",
+        "parameters": [
+          {
+            "name": "alertId",
+            "in": "path",
+            "required": true,
+            "description": "The id of the alert to delete",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "description": "Unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/alerts/{alertId}/trigger/kapacitor": {
+      "post": {
+        "tags": ["eara-v1"],
+        "summary": "Trigger an alert via a request sent from kapacitor",
+        "operationId": "triggerAlertViaKapacitor",
+        "parameters": [
+          {
+            "name": "alertId",
+            "in": "path",
+            "required": true,
+            "description": "The id of the alert to trigger",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/KapacitorRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Success response",
+            "content": {
+              "application/json": {
+                "example": {}
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/devicespecs": {
+      "post": {
+        "tags": ["edpa-v1"],
+        "summary": "Create deviceSpec using JSON",
+        "operationId": "createDeviceSpec",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeviceSpec"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created deviceSpec in JSON format",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeviceSpec"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/devicespecs/{deviceSpecId}": {
+      "get": {
+        "tags": ["edpa-v1"],
+        "summary": "Retrieve a specific deviceSpec",
+        "operationId": "getDeviceSpecById",
+        "parameters": [
+          {
+            "name": "deviceSpecId",
+            "in": "path",
+            "required": true,
+            "description": "The id of the deviceSpec to retrieve",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A deviceSpec",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeviceSpec"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": ["edpa-v1"],
+        "summary": "Update a specific deviceSpec",
+        "operationId": "updateDeviceSpecById",
+        "parameters": [
+          {
+            "name": "deviceSpecId",
+            "in": "path",
+            "required": true,
+            "description": "The id of the deviceSpec to update",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeviceSpec"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Updated deviceSpec",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeviceSpec"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["edpa-v1"],
+        "summary": "Delete a specific deviceSpec",
+        "operationId": "removeDeviceSpecById",
+        "parameters": [
+          {
+            "name": "deviceSpecId",
+            "in": "path",
+            "required": true,
+            "description": "The id of the deviceSpec to delete",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "description": "Unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/devices": {
+      "get": {
+        "tags": ["edi-v1"],
+        "summary": "List all devices",
+        "operationId": "listDevices",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "required": false,
+            "description": "The name of the device to retrieve",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "serial",
+            "in": "query",
+            "required": false,
+            "description": "The serial of the device to retrieve",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "deviceModel",
+            "in": "query",
+            "required": false,
+            "description": "The model of the device to retrieve",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A paged collection of devices",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Devices"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["edi-v1"],
+        "summary": "Create device(s) using JSON or CSV",
+        "operationId": "createDevices",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Device"
+              }
+            },
+            "application/csv": {
+              "schema": {
+                "type": "string"
+              },
+              "example": "serial,name,deviceModel,subscription\nXYZ123,MySensor,/v1/esma/users/uuid,/v1/esma/subscriptions/uuid\n"
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created device in JSON format (or a collection of devices in case of CSV request)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/Device"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "totalItems": {
+                          "type": "number",
+                          "format": "int64",
+                          "example": 1
+                        },
+                        "member": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/Device"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/devices/{deviceId}": {
+      "get": {
+        "tags": ["edi-v1"],
+        "summary": "Retrieve a specific device",
+        "operationId": "getDeviceById",
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "required": true,
+            "description": "The id of the device to retrieve",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A device",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Device"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": ["edi-v1"],
+        "summary": "Update a specific device",
+        "operationId": "updateDeviceById",
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "required": true,
+            "description": "The id of the device to update",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Device"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Updated device",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Device"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["edi-v1"],
+        "summary": "Delete a specific device",
+        "operationId": "removeDeviceById",
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "required": true,
+            "description": "The id of the device to delete",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "description": "Unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/devicemodels": {
+      "get": {
+        "tags": ["edi-v1"],
+        "summary": "List all device models",
+        "operationId": "listDeviceModels",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "required": false,
+            "description": "The name of the device model to retrieve",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A paged collection of device models",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeviceModels"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["edi-v1"],
+        "summary": "Create a device model",
+        "operationId": "createDeviceModels",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeviceModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeviceModel"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/devicemodels/{deviceModelId}": {
+      "get": {
+        "tags": ["edi-v1"],
+        "summary": "Retrieve a specific device model",
+        "operationId": "getDeviceModelById",
+        "parameters": [
+          {
+            "name": "deviceModelId",
+            "in": "path",
+            "required": true,
+            "description": "The id of the device model to retrieve",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A device model",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeviceModel"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": ["edi-v1"],
+        "summary": "Update a specific device model",
+        "operationId": "updateDeviceModelById",
+        "parameters": [
+          {
+            "name": "deviceModelId",
+            "in": "path",
+            "required": true,
+            "description": "The id of the device model to update",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeviceModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Updated device model",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeviceModel"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["edi-v1"],
+        "summary": "Delete a specific device model",
+        "operationId": "removeDeviceModelById",
+        "parameters": [
+          {
+            "name": "deviceModelId",
+            "in": "path",
+            "required": true,
+            "description": "The id of the device model to delete",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "description": "Unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "security": [
+    {
+      "ApiKeyAuth": []
+    },
+    {
+      "LnxTokenAuth": []
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "ApiKeyAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "x-api-key"
+      },
+      "LnxTokenAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "x-lnx-token",
+        "description": "Token-based authentication with 'x-lnx-token'"
+      }
+    },
+    "schemas": {
+      "GetWebhook": {
+        "title": "GetWebhook",
+        "required": ["items"],
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Item"
+            },
+            "description": ""
+          }
+        },
+        "example": {
+          "items": [
+            {
+              "id": "80753835-6d3f-47a4-a3c1-2e3a047b135e",
+              "subscription": "50d0d30e-68d9-4480-af86-666575274179",
+              "url": "https://658607a55dbb405c8068248e573143ce.api.mockbin.io",
+              "headers": null,
+              "retry_count": 3,
+              "is_suppressed": false,
+              "created_by": "6b6e3561-67f8-424b-93f0-6ce6d3f05c08",
+              "created_at": "2024-03-06T15:44:24.501367288Z"
+            },
+            {
+              "id": "fa978c7e-a555-4616-b684-75d49aa7ecb8",
+              "subscription": "50d0d30e-68d9-4480-af86-666575274179",
+              "url": "https://ellenex-webhook.free.beeceptor.com/todos",
+              "headers": null,
+              "retry_count": 1,
+              "is_suppressed": true,
+              "created_by": "6b6e3561-67f8-424b-93f0-6ce6d3f05c08",
+              "created_at": "2024-03-06T16:49:21.839990655Z",
+              "updated_by": "6b6e3561-67f8-424b-93f0-6ce6d3f05c08",
+              "updated_at": "2024-03-07T06:57:53.972234214Z"
+            },
+            {
+              "id": "1dc3d2cb-40c7-4323-986f-153c79341a30",
+              "subscription": "50d0d30e-68d9-4480-af86-666575274179",
+              "url": "https://5a2c11x0-faed-4f62-80da-b41862019d06.api.mockbin.io",
+              "headers": null,
+              "retry_count": 3,
+              "is_suppressed": false,
+              "created_by": "6b6e3561-67f8-424b-93f0-6ce6d3f05c08",
+              "created_at": "2024-03-08T00:04:29.747115547Z"
+            }
+          ]
+        }
+      },
+      "Item": {
+        "title": "Item",
+        "required": [
+          "id",
+          "subscription",
+          "url",
+          "headers",
+          "retry_count",
+          "is_suppressed",
+          "created_by",
+          "created_at"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "subscription": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "headers": {
+            "type": "string",
+            "nullable": true
+          },
+          "retry_count": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "is_suppressed": {
+            "type": "boolean"
+          },
+          "created_by": {
+            "type": "string"
+          },
+          "created_at": {
+            "type": "string"
+          },
+          "updated_by": {
+            "type": "string"
+          },
+          "updated_at": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "id": "80753835-6d3f-47a4-a3c1-2e3a047b135e",
+          "subscription": "50d0d30e-68d9-4480-af86-666575274179",
+          "url": "https://658607a55dbb405c8068248e573143ce.api.mockbin.io",
+          "headers": null,
+          "retry_count": 3,
+          "is_suppressed": false,
+          "created_by": "6b6e3561-67f8-424b-93f0-6ce6d3f05c08",
+          "created_at": "2024-03-06T15:44:24.501367288Z"
+        }
+      },
+      "GetWebhookDetails": {
+        "title": "GetWebhookDetails",
+        "required": [
+          "id",
+          "subscription",
+          "url",
+          "headers",
+          "retry_count",
+          "is_suppressed",
+          "created_by",
+          "created_at",
+          "updated_by",
+          "updated_at"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "subscription": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "headers": {
+            "type": "string",
+            "nullable": true
+          },
+          "retry_count": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "is_suppressed": {
+            "type": "boolean"
+          },
+          "created_by": {
+            "type": "string"
+          },
+          "created_at": {
+            "type": "string"
+          },
+          "updated_by": {
+            "type": "string"
+          },
+          "updated_at": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "id": "fa978c7e-a555-4616-b684-75d49aa7ecb8",
+          "subscription": "50d0d30e-68d9-4480-af86-666575274179",
+          "url": "https://ellenex-webhook.free.beeceptor.com/todos",
+          "headers": null,
+          "retry_count": 1,
+          "is_suppressed": true,
+          "created_by": "6b6e3561-67f8-424b-93f0-6ce6d3f05c08",
+          "created_at": "2024-03-06T16:49:21.839990655Z",
+          "updated_by": "6b6e3561-67f8-424b-93f0-6ce6d3f05c08",
+          "updated_at": "2024-03-07T06:57:53.972234214Z"
+        }
+      },
+      "CreateWebhookRequest": {
+        "title": "CreateWebhookRequest",
+        "required": ["url", "headers", "retry_count"],
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string"
+          },
+          "headers": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Headers"
+              },
+              {}
+            ]
+          },
+          "retry_count": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "example": {
+          "url": "https://2a2c11x0-faed-4f62-80da-b41862019d06.api.mockbin.io",
+          "headers": {
+            "test": "1",
+            "test2": "2"
+          },
+          "retry_count": 3
+        }
+      },
+      "Headers": {
+        "title": "Headers",
+        "required": ["test", "test2"],
+        "type": "object",
+        "properties": {
+          "test": {
+            "type": "string"
+          },
+          "test2": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "test": "1",
+          "test2": "2"
+        }
+      },
+      "CreateWebhook": {
+        "title": "CreateWebhook",
+        "required": [
+          "id",
+          "subscription",
+          "url",
+          "headers",
+          "retry_count",
+          "is_suppressed",
+          "created_by",
+          "created_at"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "subscription": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "headers": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Headers"
+              },
+              {}
+            ]
+          },
+          "retry_count": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "is_suppressed": {
+            "type": "boolean"
+          },
+          "created_by": {
+            "type": "string"
+          },
+          "created_at": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "id": "a60886b2-808d-4dda-bcde-7d8239720739",
+          "subscription": "50d0d30e-68d9-4480-af86-666575274179",
+          "url": "https://2a2c11x0-faed-4f62-80da-b41862019d06.api.mockbin.io",
+          "headers": {
+            "test": "1",
+            "test2": "2"
+          },
+          "retry_count": 3,
+          "is_suppressed": false,
+          "created_by": "6b6e3561-67f8-424b-93f0-6ce6d3f05c08",
+          "created_at": "2024-03-08T02:29:56.65214508Z"
+        }
+      },
+      "GetTrigger": {
+        "title": "GetTrigger",
+        "required": ["items"],
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Item1"
+            },
+            "description": ""
+          }
+        },
+        "example": {
+          "items": [
+            {
+              "id": "8093d973-0726-4f67-9361-d23c10853cfb",
+              "subscription": "50d0d30e-68d9-4480-af86-666575274179",
+              "webhook_id": "fa978c7e-a555-4616-b684-75d49aa7ecb8",
+              "status": "FAILED",
+              "retries": 4,
+              "created_by": "SYSTEM_SNS",
+              "created_at": "2024-03-06T17:19:24.554530788Z",
+              "update_by": "SYSTEM_SNS",
+              "updated_at": "2024-03-06T17:29:27.025202084Z"
+            },
+            {
+              "id": "fa369c7a-b8a8-4f7a-a5d7-f293ab988cd9",
+              "subscription": "50d0d30e-68d9-4480-af86-666575274179",
+              "webhook_id": "fa978c7e-a555-4616-b684-75d49aa7ecb8",
+              "status": "FAILED",
+              "retries": 4,
+              "created_by": "SYSTEM_SNS",
+              "created_at": "2024-03-06T17:19:15.785483112Z",
+              "update_by": "SYSTEM_SNS",
+              "updated_at": "2024-03-06T17:29:27.026863171Z"
+            },
+            {
+              "id": "a1815f1e-4206-4d56-b788-a06a1f9ca6d7",
+              "subscription": "50d0d30e-68d9-4480-af86-666575274179",
+              "webhook_id": "fa978c7e-a555-4616-b684-75d49aa7ecb8",
+              "status": "FAILED",
+              "retries": 4,
+              "created_by": "SYSTEM_SNS",
+              "created_at": "2024-03-06T17:18:45.647524635Z",
+              "update_by": "SYSTEM_SNS",
+              "updated_at": "2024-03-06T17:29:26.801804923Z"
+            }
+          ]
+        }
+      },
+      "Item1": {
+        "title": "Item1",
+        "required": [
+          "id",
+          "subscription",
+          "webhook_id",
+          "status",
+          "retries",
+          "created_by",
+          "created_at",
+          "update_by",
+          "updated_at"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "subscription": {
+            "type": "string"
+          },
+          "webhook_id": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "retries": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "created_by": {
+            "type": "string"
+          },
+          "created_at": {
+            "type": "string"
+          },
+          "update_by": {
+            "type": "string"
+          },
+          "updated_at": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "id": "8093d973-0726-4f67-9361-d23c10853cfb",
+          "subscription": "50d0d30e-68d9-4480-af86-666575274179",
+          "webhook_id": "fa978c7e-a555-4616-b684-75d49aa7ecb8",
+          "status": "FAILED",
+          "retries": 4,
+          "created_by": "SYSTEM_SNS",
+          "created_at": "2024-03-06T17:19:24.554530788Z",
+          "update_by": "SYSTEM_SNS",
+          "updated_at": "2024-03-06T17:29:27.025202084Z"
+        }
+      },
+      "GetTriggerDetails": {
+        "title": "GetTriggerDetails",
+        "required": [
+          "id",
+          "subscription",
+          "webhook_id",
+          "webhook",
+          "status",
+          "retries",
+          "trigger_logs",
+          "body",
+          "created_by",
+          "created_at",
+          "update_by",
+          "updated_at"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "subscription": {
+            "type": "string"
+          },
+          "webhook_id": {
+            "type": "string"
+          },
+          "webhook": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Webhook"
+              },
+              {}
+            ]
+          },
+          "status": {
+            "type": "string"
+          },
+          "retries": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "trigger_logs": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TriggerLog"
+            },
+            "description": ""
+          },
+          "body": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Body"
+            },
+            "description": ""
+          },
+          "created_by": {
+            "type": "string"
+          },
+          "created_at": {
+            "type": "string"
+          },
+          "update_by": {
+            "type": "string"
+          },
+          "updated_at": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "id": "0da811e7-e1ce-4787-8239-ebf699196570",
+          "subscription": "50d0d30e-68d9-4480-af86-666575274179",
+          "webhook_id": "9cfc68b9-e216-4629-a154-053e4f4f55b7",
+          "webhook": {
+            "id": "9cfc68b9-e216-4629-a154-053e4f4f55b7",
+            "subscription": "50d0d30e-68d9-4480-af86-666575274179",
+            "url": "https://2a2c11x0-faed-4f62-80da-b41862019d06.api.mockbin.io",
+            "headers": null,
+            "retry_count": 3,
+            "is_suppressed": false,
+            "created_by": "6b6e3561-67f8-424b-93f0-6ce6d3f05c08",
+            "created_at": "2024-03-08T02:37:05.307226951Z"
+          },
+          "status": "FAILED",
+          "retries": 4,
+          "trigger_logs": [
+            {
+              "response_body": "{\n  \"type\": \"https://httpproblems.com/http-status/400\",\n  \"title\": \"Bad Request\",\n  \"status\": 400,\n  \"instance\": \"/2a2c11x0-faed-4f62-80da-b41862019d06\",\n  \"trace\": {\n    \"timestamp\": \"2024-03-08T02:38:45.775Z\",\n    \"requestId\": \"13fea9c6-77a0-4a66-93ca-25e23ba28ac4\",\n    \"buildId\": \"fb9c10b8-f38c-4e4a-b370-97cfa502edb9\",\n    \"rayId\": \"860f736ef9d83adb\"\n  }\n}",
+              "status_code": 400
+            },
+            {
+              "response_body": "{\n  \"type\": \"https://httpproblems.com/http-status/400\",\n  \"title\": \"Bad Request\",\n  \"status\": 400,\n  \"instance\": \"/2a2c11x0-faed-4f62-80da-b41862019d06\",\n  \"trace\": {\n    \"timestamp\": \"2024-03-08T02:39:25.658Z\",\n    \"requestId\": \"59aafc77-888a-444b-971b-57c3b345b297\",\n    \"buildId\": \"fb9c10b8-f38c-4e4a-b370-97cfa502edb9\",\n    \"rayId\": \"860f7468e87d3b59\"\n  }\n}",
+              "status_code": 400
+            },
+            {
+              "response_body": "{\n  \"type\": \"https://httpproblems.com/http-status/400\",\n  \"title\": \"Bad Request\",\n  \"status\": 400,\n  \"instance\": \"/2a2c11x0-faed-4f62-80da-b41862019d06\",\n  \"trace\": {\n    \"timestamp\": \"2024-03-08T02:44:25.662Z\",\n    \"requestId\": \"a33421fa-271a-4eb5-9f47-dfa063139a43\",\n    \"buildId\": \"fb9c10b8-f38c-4e4a-b370-97cfa502edb9\",\n    \"rayId\": \"860f7bbac83a28a4\"\n  }\n}",
+              "status_code": 400
+            },
+            {
+              "error": "Maximum number of retries exceeded"
+            }
+          ],
+          "body": [
+            {
+              "DeviceId": "6d832f32-5975-4a70-bb74-c45c2571be58",
+              "DeviceSerial": "70B3D5CD04000009",
+              "Parameters": [
+                {
+                  "level": 0.64
+                },
+                {
+                  "temperature": 23.62
+                },
+                {
+                  "chargelevel": 3.52
+                }
+              ],
+              "Timestamp": "2024-03-08T02:38:43.256999969Z"
+            }
+          ],
+          "created_by": "SYSTEM_SNS",
+          "created_at": "2024-03-08T02:38:45.538360739Z",
+          "update_by": "SYSTEM_SNS",
+          "updated_at": "2024-03-08T02:49:25.600135755Z"
+        }
+      },
+      "Webhook": {
+        "title": "Webhook",
+        "required": [
+          "id",
+          "subscription",
+          "url",
+          "headers",
+          "retry_count",
+          "is_suppressed",
+          "created_by",
+          "created_at"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "subscription": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "headers": {
+            "type": "string",
+            "nullable": true
+          },
+          "retry_count": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "is_suppressed": {
+            "type": "boolean"
+          },
+          "created_by": {
+            "type": "string"
+          },
+          "created_at": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "id": "9cfc68b9-e216-4629-a154-053e4f4f55b7",
+          "subscription": "50d0d30e-68d9-4480-af86-666575274179",
+          "url": "https://2a2c11x0-faed-4f62-80da-b41862019d06.api.mockbin.io",
+          "headers": null,
+          "retry_count": 3,
+          "is_suppressed": false,
+          "created_by": "6b6e3561-67f8-424b-93f0-6ce6d3f05c08",
+          "created_at": "2024-03-08T02:37:05.307226951Z"
+        }
+      },
+      "TriggerLog": {
+        "title": "TriggerLog",
+        "type": "object",
+        "properties": {
+          "response_body": {
+            "type": "string"
+          },
+          "status_code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "error": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "response_body": "{\n  \"type\": \"https://httpproblems.com/http-status/400\",\n  \"title\": \"Bad Request\",\n  \"status\": 400,\n  \"instance\": \"/2a2c11x0-faed-4f62-80da-b41862019d06\",\n  \"trace\": {\n    \"timestamp\": \"2024-03-08T02:38:45.775Z\",\n    \"requestId\": \"13fea9c6-77a0-4a66-93ca-25e23ba28ac4\",\n    \"buildId\": \"fb9c10b8-f38c-4e4a-b370-97cfa502edb9\",\n    \"rayId\": \"860f736ef9d83adb\"\n  }\n}",
+          "status_code": 400
+        }
+      },
+      "Body": {
+        "title": "Body",
+        "required": ["DeviceId", "DeviceSerial", "Parameters", "Timestamp"],
+        "type": "object",
+        "properties": {
+          "DeviceId": {
+            "type": "string"
+          },
+          "DeviceSerial": {
+            "type": "string"
+          },
+          "Parameters": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Webhook-Parameter"
+            },
+            "description": ""
+          },
+          "Timestamp": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "DeviceId": "6d832f32-5975-4a70-bb74-c45c2571be58",
+          "DeviceSerial": "70B3D5CD04000009",
+          "Parameters": [
+            {
+              "level": 0.64
+            },
+            {
+              "temperature": 23.62
+            },
+            {
+              "chargelevel": 3.52
+            }
+          ],
+          "Timestamp": "2024-03-08T02:38:43.256999969Z"
+        }
+      },
+      "Webhook-Parameter": {
+        "title": "Webhook-Parameter",
+        "type": "object",
+        "properties": {
+          "level": {
+            "type": "number"
+          },
+          "temperature": {
+            "type": "number"
+          },
+          "chargelevel": {
+            "type": "number"
+          }
+        },
+        "example": {
+          "level": 0.64
+        }
+      },
+      "UpdateWebhookRequest": {
+        "title": "UpdateWebhookRequest",
+        "required": ["url", "retry_count"],
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string"
+          },
+          "retry_count": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "example": {
+          "url": "https://ellenex-webhook.free.beeceptor.com/todos",
+          "retry_count": 3
+        }
+      },
+      "UpdateWebhook": {
+        "title": "UpdateWebhook",
+        "required": [
+          "id",
+          "subscription",
+          "url",
+          "headers",
+          "retry_count",
+          "is_suppressed",
+          "created_by",
+          "created_at",
+          "updated_by",
+          "updated_at"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "subscription": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "headers": {
+            "type": "string",
+            "nullable": true
+          },
+          "retry_count": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "is_suppressed": {
+            "type": "boolean"
+          },
+          "created_by": {
+            "type": "string"
+          },
+          "created_at": {
+            "type": "string"
+          },
+          "updated_by": {
+            "type": "string"
+          },
+          "updated_at": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "id": "9cfc68b9-e216-4629-a154-053e4f4f55b7",
+          "subscription": "50d0d30e-68d9-4480-af86-666575274179",
+          "url": "https://ellenex-webhook.free.beeceptor.com/todos",
+          "headers": null,
+          "retry_count": 3,
+          "is_suppressed": false,
+          "created_by": "6b6e3561-67f8-424b-93f0-6ce6d3f05c08",
+          "created_at": "2024-03-08T02:37:05.307226951Z",
+          "updated_by": "6b6e3561-67f8-424b-93f0-6ce6d3f05c08",
+          "updated_at": "2024-03-08T03:03:27.021188864Z"
+        }
+      },
+      "DeleteWebhook": {
+        "title": "DeleteWebhook",
+        "required": ["message", "timestamp"],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "message": "Deleted successfully",
+          "timestamp": "2024-03-08T02:36:12.391133282Z"
+        }
+      },
+      "Error": {
+        "required": ["title"],
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "Error"
+          },
+          "title": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
+        }
+      },
+      "Alert": {
+        "properties": {
+          "@context": {
+            "type": "string",
+            "example": "https://schema.ellenex.com/v1/context.jsonld"
+          },
+          "@type": {
+            "type": "string",
+            "example": "Alert"
+          },
+          "@id": {
+            "type": "string",
+            "example": "/v1/eara/alerts/uuid"
+          },
+          "name": {
+            "type": "string",
+            "example": "Water level low"
+          },
+          "message": {
+            "type": "string",
+            "example": "Water tank level is below threshold."
+          },
+          "device": {
+            "type": "string",
+            "example": "/v1/edi/devices/uuid"
+          },
+          "parameter": {
+            "type": "string",
+            "description": "Name of the parameter to check and alert on",
+            "example": "Level"
+          },
+          "subscription": {
+            "type": "string",
+            "example": "/v1/esma/subscriptions/uuid"
+          },
+          "operator": {
+            "type": "string",
+            "enum": [
+              "LESS_THAN",
+              "GREATER_THAN",
+              "EQUAL_TO",
+              "LESS_THAN_OR_EQUAL_TO",
+              "GREATER_THAN_OR_EQUAL_TO",
+              "MISSED_DATA"
+            ]
+          },
+          "threshold": {
+            "type": "string",
+            "description": "Threshold value to check the parameter against, using the specified operator. This value will be converted to the required type, e.g. number, based on the specified opeartor.",
+            "example": 10
+          },
+          "minimumRepeats": {
+            "type": "number",
+            "description": "Minimum number of threshold breaches that should occur before this alert is raised.",
+            "format": "int64",
+            "example": 1
+          },
+          "missedDataInterval": {
+            "type": "number",
+            "description": "Number of minutes to wait before this alert is raised if opeartor is set to MISSED_DATA.",
+            "format": "int64",
+            "example": 120
+          },
+          "alertLevel": {
+            "type": "string",
+            "description": "Criticality level of the alert",
+            "enum": ["WARNING", "CRITICAL"]
+          },
+          "renotifyInterval": {
+            "type": "number",
+            "description": "Number of minutes to wait before renotifying if this alert is raised but not cleared yet.",
+            "format": "int64",
+            "example": 60
+          },
+          "notifyOnClearing": {
+            "type": "boolean",
+            "example": true
+          },
+          "autoClear": {
+            "type": "boolean",
+            "example": false
+          },
+          "tags": {
+            "$ref": "#/components/schemas/AlertTags"
+          },
+          "notificationTemplate": {
+            "type": "string",
+            "description": "The template to notify when this alert is triggered",
+            "example": "/v1/edna/templates/uuid"
+          },
+          "createdBy": {
+            "type": "string",
+            "description": "The first user who has created the entity",
+            "example": "/v1/esma/users/uuid"
+          },
+          "dateCreated": {
+            "type": "string",
+            "description": "ISO-8601 format date-time that indicates when the entity was first created",
+            "format": "date-time",
+            "example": "2018-10-20T18:51:13+00:00"
+          },
+          "updatedBy": {
+            "type": "string",
+            "description": "The last user who has updated the entity",
+            "example": "/v1/esma/users/uuid"
+          },
+          "dateUpdated": {
+            "type": "string",
+            "description": "ISO-8601 format date-time that indicates when the entity was last updated",
+            "format": "date-time",
+            "example": "2018-10-20T18:51:13+00:00"
+          }
+        }
+      },
+      "Alerts": {
+        "properties": {
+          "@context": {
+            "type": "string",
+            "example": "https://schema.ellenex.com/v1/context.jsonld"
+          },
+          "@type": {
+            "type": "string",
+            "example": "Collection"
+          },
+          "@id": {
+            "type": "string",
+            "example": "/v1/eara/alerts"
+          },
+          "totalItems": {
+            "type": "number",
+            "format": "int64",
+            "example": 1
+          },
+          "member": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Alert"
+            }
+          },
+          "view": {
+            "$ref": "#/components/schemas/PartialAlertsView"
+          }
+        }
+      },
+      "PartialAlertsView": {
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "PartialCollectionView"
+          },
+          "@id": {
+            "type": "string",
+            "example": "/v1/eara/alerts?page=1"
+          },
+          "first": {
+            "type": "string",
+            "example": "/v1/eara/alerts?page=1"
+          },
+          "previous": {
+            "type": "string",
+            "example": "/v1/eara/alerts?page=1"
+          },
+          "next": {
+            "type": "string",
+            "example": "/v1/eara/alerts?page=1"
+          },
+          "last": {
+            "type": "string",
+            "example": "/v1/eara/alerts?page=1"
+          }
+        }
+      },
+      "AlertTags": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "example": "value"
+          }
+        }
+      },
+      "KapacitorRequest": {
+        "type": "object",
+        "properties": {
+          "Name": {
+            "type": "string",
+            "example": "observations"
+          },
+          "TaskName": {
+            "type": "string",
+            "example": "level_alert"
+          },
+          "Fields": {
+            "type": "object",
+            "example": {
+              "level": 0.1
+            }
+          },
+          "Level": {
+            "type": "string",
+            "example": "WARNING"
+          },
+          "Time": {
+            "type": "string",
+            "description": "ISO-8601 format date-time that indicates when the alert was raised",
+            "format": "date-time",
+            "example": "2018-10-20T18:51:13+00:05Z"
+          },
+          "Message": {
+            "type": "string",
+            "example": "Water level is low."
+          }
+        }
+      },
+      "DeviceSpec": {
+        "properties": {
+          "@context": {
+            "type": "string",
+            "example": "https://schema.ellenex.com/v1/context.jsonld"
+          },
+          "@type": {
+            "type": "string",
+            "example": "DeviceSpec"
+          },
+          "@id": {
+            "type": "string",
+            "example": "/v1/edpa/devicespecs/uuid"
+          },
+          "deviceModel": {
+            "properties": {
+              "@id": {
+                "type": "string",
+                "example": "/v1/edi/devicemodels/uuid"
+              },
+              "name": {
+                "type": "string",
+                "example": "PLD2-L"
+              }
+            }
+          },
+          "transformations": {
+            "type": "array",
+            "items": {
+              "oneOf": [
+                {
+                  "$ref": "#/components/schemas/InputValue"
+                },
+                {
+                  "$ref": "#/components/schemas/WeatherForecast"
+                },
+                {
+                  "$ref": "#/components/schemas/FunctionTransform"
+                },
+                {
+                  "$ref": "#/components/schemas/FieldMappingTransform"
+                }
+              ]
+            }
+          }
+        }
+      },
+      "InputValue": {
+        "type": "object",
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "InputValue"
+          },
+          "input": {
+            "properties": {
+              "fieldName": {
+                "type": "string",
+                "example": "SensorRange"
+              },
+              "fieldType": {
+                "type": "string",
+                "example": "Number"
+              },
+              "fieldValue": {
+                "type": "number",
+                "example": 5
+              },
+              "tags": {
+                "properties": {
+                  "unitCode": {
+                    "type": "string",
+                    "example": "mtr"
+                  }
+                }
+              },
+              "priority": {
+                "type": "number",
+                "example": 10
+              }
+            }
+          }
+        }
+      },
+      "WeatherForecast": {
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "WeatherForecast"
+          },
+          "function": {
+            "properties": {
+              "of": {
+                "type": "string",
+                "example": "totalRainfall"
+              },
+              "duration": {
+                "type": "string",
+                "example": "1m"
+              },
+              "location": {
+                "type": "string",
+                "example": "West Talgai"
+              },
+              "groupBy": {
+                "type": "string",
+                "example": "rainfallChance"
+              },
+              "outputFieldName": {
+                "type": "string",
+                "example": "MonthRainfallByChance"
+              },
+              "outputTimestampFieldName": {
+                "type": "string",
+                "example": "MonthRainfallByChanceTimestamp"
+              }
+            }
+          }
+        }
+      },
+      "FunctionTransform": {
+        "properties": {
+          "function": {
+            "properties": {
+              "expression": {
+                "type": "string",
+                "example": "0.83 - AverageAnnualRainfall * 0.00018) * ImperviousFraction + 0.0013 * (AverageAnnualRainfall ** 0.8) - 0.095"
+              },
+              "kind": {
+                "type": "string",
+                "example": "BasicCalculation"
+              },
+              "outputFieldName": {
+                "type": "string",
+                "example": "RunoffCoefficient"
+              },
+              "outputFieldType": {
+                "type": "string",
+                "example": "Number"
+              },
+              "tags": {
+                "properties": {
+                  "unitCode": {
+                    "type": "string",
+                    "example": "mtr"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "FieldMappingTransform": {
+        "properties": {
+          "fieldToParameterMapping": {
+            "properties": {
+              "decimalPoints": {
+                "type": "number",
+                "example": 1
+              },
+              "fieldName": {
+                "type": "string",
+                "example": "Level"
+              },
+              "parameterName": {
+                "type": "string",
+                "example": "level"
+              },
+              "tagMappings": {
+                "properties": {
+                  "unit": {
+                    "type": "string",
+                    "example": "unitCode"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "Device": {
+        "properties": {
+          "@context": {
+            "type": "string",
+            "example": "https://schema.ellenex.com/v1/context.jsonld"
+          },
+          "@type": {
+            "type": "string",
+            "example": "Device"
+          },
+          "@id": {
+            "type": "string",
+            "example": "/v1/edi/devices/uuid"
+          },
+          "serial": {
+            "type": "string",
+            "example": "ABC-123"
+          },
+          "name": {
+            "type": "string",
+            "example": "My Pressure Sensor"
+          },
+          "deviceModel": {
+            "type": "string",
+            "example": "/v1/edi/devicemodels/uuid"
+          },
+          "note": {
+            "type": "string",
+            "example": "Testing a device for monitoring gas pressure."
+          },
+          "owner": {
+            "type": "string",
+            "example": "/v1/esma/users/uuid"
+          },
+          "subscription": {
+            "type": "string",
+            "example": "/v1/esma/subscriptions/uuid"
+          },
+          "manufacturer": {
+            "type": "object",
+            "properties": {
+              "@type": {
+                "type": "string",
+                "example": "Organization"
+              },
+              "name": {
+                "type": "string",
+                "example": "Ellenex"
+              }
+            }
+          },
+          "manualLocation": {
+            "$ref": "#/components/schemas/Place"
+          },
+          "autoLocation": {
+            "$ref": "#/components/schemas/Place"
+          },
+          "metadata": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/KeyValuePair"
+            }
+          },
+          "networks": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "example": "TTN"
+                }
+              }
+            }
+          },
+          "createdBy": {
+            "type": "string",
+            "description": "The first user who has created the entity",
+            "example": "/v1/erama/users/uuid"
+          },
+          "dateCreated": {
+            "type": "string",
+            "description": "ISO-8601 format date-time that indicates when the entity was first created",
+            "format": "date-time",
+            "example": "2018-10-20T18:51:13+00:00"
+          },
+          "updatedBy": {
+            "type": "string",
+            "description": "The last user who has updated the entity",
+            "example": "/v1/erama/users/uuid"
+          },
+          "dateUpdated": {
+            "type": "string",
+            "description": "ISO-8601 format date-time that indicates when the entity was last updated",
+            "format": "date-time",
+            "example": "2018-10-20T18:51:13+00:00"
+          }
+        }
+      },
+      "Devices": {
+        "properties": {
+          "@context": {
+            "type": "string",
+            "example": "https://schema.ellenex.com/v1/context.jsonld"
+          },
+          "@type": {
+            "type": "string",
+            "example": "Collection"
+          },
+          "@id": {
+            "type": "string",
+            "example": "/v1/edi/devices"
+          },
+          "totalItems": {
+            "type": "number",
+            "format": "int64",
+            "example": 1
+          },
+          "member": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Device"
+            }
+          },
+          "view": {
+            "$ref": "#/components/schemas/PartialDevicesView"
+          }
+        }
+      },
+      "PartialDevicesView": {
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "PartialCollectionView"
+          },
+          "@id": {
+            "type": "string",
+            "example": "/v1/edi/devices?page=1"
+          },
+          "first": {
+            "type": "string",
+            "example": "/v1/edi/devices?page=1"
+          },
+          "previous": {
+            "type": "string",
+            "example": "/v1/edi/devices?page=1"
+          },
+          "next": {
+            "type": "string",
+            "example": "/v1/edi/devices?page=1"
+          },
+          "last": {
+            "type": "string",
+            "example": "/v1/edi/devices?page=1"
+          }
+        }
+      },
+      "DeviceModel": {
+        "properties": {
+          "@context": {
+            "type": "string",
+            "example": "https://schema.ellenex.com/v1/context.jsonld"
+          },
+          "@type": {
+            "type": "string",
+            "example": "DeviceModel"
+          },
+          "@id": {
+            "type": "string",
+            "example": "/v1/edi/devicemodels/uuid"
+          },
+          "name": {
+            "type": "string",
+            "example": "PDT2"
+          },
+          "description": {
+            "type": "string",
+            "example": "A device for monitoring air pressure."
+          },
+          "owner": {
+            "type": "string",
+            "example": "/v1/esma/users/uuid"
+          },
+          "manufacturer": {
+            "type": "object",
+            "properties": {
+              "@type": {
+                "type": "string",
+                "example": "Organization"
+              },
+              "name": {
+                "type": "string",
+                "example": "Ellenex"
+              }
+            }
+          },
+          "subscription": {
+            "type": "string",
+            "example": "/v1/esma/subscriptions/uuid"
+          },
+          "createdBy": {
+            "type": "string",
+            "description": "The first user who has created the entity",
+            "example": "/v1/erama/users/uuid"
+          },
+          "dateCreated": {
+            "type": "string",
+            "description": "ISO-8601 format date-time that indicates when the entity was first created",
+            "format": "date-time",
+            "example": "2018-10-20T18:51:13+00:00"
+          },
+          "updatedBy": {
+            "type": "string",
+            "description": "The last user who has updated the entity",
+            "example": "/v1/erama/users/uuid"
+          },
+          "dateUpdated": {
+            "type": "string",
+            "description": "ISO-8601 format date-time that indicates when the entity was last updated",
+            "format": "date-time",
+            "example": "2018-10-20T18:51:13+00:00"
+          },
+          "networks": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "example": "SIGFOX"
+                }
+              }
+            }
+          },
+          "parameters": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Parameter"
+            }
+          },
+          "metadata": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/KeyValuePair"
+            }
+          }
+        }
+      },
+      "DeviceModels": {
+        "properties": {
+          "@context": {
+            "type": "string",
+            "example": "https://schema.ellenex.com/v1/context.jsonld"
+          },
+          "@type": {
+            "type": "string",
+            "example": "Collection"
+          },
+          "@id": {
+            "type": "string",
+            "example": "/v1/edi/devicemodels"
+          },
+          "totalItems": {
+            "type": "number",
+            "format": "int64",
+            "example": 1
+          },
+          "member": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DeviceModel"
+            }
+          },
+          "view": {
+            "$ref": "#/components/schemas/PartialDeviceModelsView"
+          }
+        }
+      },
+      "PartialDeviceModelsView": {
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "PartialCollectionView"
+          },
+          "@id": {
+            "type": "string",
+            "example": "/v1/edi/devicemodels?page=1"
+          },
+          "first": {
+            "type": "string",
+            "example": "/v1/edi/devicemodels?page=1"
+          },
+          "previous": {
+            "type": "string",
+            "example": "/v1/edi/devicemodels?page=1"
+          },
+          "next": {
+            "type": "string",
+            "example": "/v1/edi/devicemodels?page=1"
+          },
+          "last": {
+            "type": "string",
+            "example": "/v1/edi/devicemodels?page=1"
+          }
+        }
+      },
+      "Parameter": {
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "Parameter"
+          },
+          "@id": {
+            "type": "string",
+            "example": "/v1/edsa/parameters/id-air-pressure-pal-uid"
+          },
+          "name": {
+            "type": "string",
+            "example": "Pressure"
+          },
+          "dataType": {
+            "type": "string",
+            "enum": ["Number"],
+            "example": "Number"
+          },
+          "unitCode": {
+            "type": "string",
+            "example": "PAL"
+          },
+          "unitText": {
+            "type": "string",
+            "example": "Pa"
+          },
+          "featureOf": {
+            "type": "string",
+            "example": "Air"
+          }
+        }
+      },
+      "KeyValuePair": {
+        "type": "object",
+        "required": ["key", "value"],
+        "properties": {
+          "key": {
+            "type": "string"
+          },
+          "value": {
+            "oneOf": [
+              {
+                "type": "string",
+                "example": "low"
+              },
+              {
+                "type": "number",
+                "example": 1.324
+              },
+              {
+                "type": "boolean",
+                "example": true
+              }
+            ]
+          }
+        }
+      },
+      "Place": {
+        "properties": {
+          "@context": {
+            "type": "string",
+            "example": "https://schema.ellenex.com/v1/context.jsonld"
+          },
+          "@type": {
+            "type": "string",
+            "example": "Place"
+          },
+          "address": {
+            "type": "object",
+            "properties": {
+              "@type": {
+                "type": "string",
+                "example": "PostalAddress"
+              },
+              "addressCountry": {
+                "type": "string",
+                "example": "AU"
+              },
+              "streetAddress": {
+                "type": "string",
+                "example": "5 Victoria St"
+              },
+              "addressLocality": {
+                "type": "string",
+                "example": "Williamstown"
+              },
+              "addressRegion": {
+                "type": "string",
+                "example": "VIC"
+              },
+              "postalCode": {
+                "type": "string",
+                "example": "3016"
+              }
+            }
+          },
+          "geo": {
+            "type": "object",
+            "properties": {
+              "@type": {
+                "type": "string",
+                "example": "GeoCoordinates"
+              },
+              "latitude": {
+                "type": "string",
+                "example": "-37.867179"
+              },
+              "longitude": {
+                "type": "string",
+                "example": "144.887433"
+              }
+            }
+          }
+        }
+      },
+      "Template": {
+        "properties": {
+          "@context": {
+            "type": "string",
+            "example": "https://schema.ellenex.com/v1/context.jsonld"
+          },
+          "@type": {
+            "type": "string",
+            "example": "Template"
+          },
+          "@id": {
+            "type": "string",
+            "example": "/v1/edna/templates/uuid"
+          },
+          "name": {
+            "type": "string",
+            "example": "My Notification Template"
+          },
+          "defaultMessage": {
+            "type": "string",
+            "example": "A notification is sent."
+          },
+          "subscription": {
+            "type": "string",
+            "example": "/v1/esma/subscriptions/uuid"
+          },
+          "notifications": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/NotificationItem"
+            }
+          },
+          "tags": {
+            "$ref": "#/components/schemas/Tags"
+          },
+          "createdBy": {
+            "type": "string",
+            "description": "The first user who has created the entity",
+            "example": "/v1/esma/users/uuid"
+          },
+          "dateCreated": {
+            "type": "string",
+            "description": "ISO-8601 format date-time that indicates when the entity was first created",
+            "format": "date-time",
+            "example": "2018-10-20T18:51:13+00:00"
+          },
+          "updatedBy": {
+            "type": "string",
+            "description": "The last user who has updated the entity",
+            "example": "/v1/esma/users/uuid"
+          },
+          "dateUpdated": {
+            "type": "string",
+            "description": "ISO-8601 format date-time that indicates when the entity was last updated",
+            "format": "date-time",
+            "example": "2018-10-20T18:51:13+00:00"
+          }
+        }
+      },
+      "Templates": {
+        "properties": {
+          "@context": {
+            "type": "string",
+            "example": "https://schema.ellenex.com/v1/context.jsonld"
+          },
+          "@type": {
+            "type": "string",
+            "example": "Collection"
+          },
+          "@id": {
+            "type": "string",
+            "example": "/v1/edna/templates"
+          },
+          "totalItems": {
+            "type": "number",
+            "format": "int64",
+            "example": 1
+          },
+          "member": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Template"
+            }
+          },
+          "view": {
+            "$ref": "#/components/schemas/PartialTemplatesView"
+          }
+        }
+      },
+      "PartialTemplatesView": {
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "PartialCollectionView"
+          },
+          "@id": {
+            "type": "string",
+            "example": "/v1/edna/templates?page=1"
+          },
+          "first": {
+            "type": "string",
+            "example": "/v1/edna/templates?page=1"
+          },
+          "previous": {
+            "type": "string",
+            "example": "/v1/edna/templates?page=1"
+          },
+          "next": {
+            "type": "string",
+            "example": "/v1/edna/templates?page=1"
+          },
+          "last": {
+            "type": "string",
+            "example": "/v1/edna/templates?page=1"
+          }
+        }
+      },
+      "Tags": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "example": "value"
+          }
+        }
+      },
+      "Notification": {
+        "properties": {
+          "@context": {
+            "type": "string",
+            "example": "https://schema.ellenex.com/v1/context.jsonld"
+          },
+          "@type": {
+            "type": "string",
+            "example": "Notification"
+          },
+          "@id": {
+            "type": "string",
+            "example": "/v1/edna/notifications/uuid"
+          },
+          "kind": {
+            "type": "string",
+            "enum": ["TEMPLATE", "SMS", "EMAIL"]
+          },
+          "shortMessage": {
+            "type": "string",
+            "example": "Water tank level is below threshold."
+          },
+          "longMessage": {
+            "type": "string",
+            "example": "Water tank level is below threshold. You can check a web address for more information."
+          },
+          "mobileNumber": {
+            "type": "string",
+            "example": "+61 491 570 110"
+          },
+          "emailAddress": {
+            "type": "string",
+            "example": "info@ellenex.com"
+          },
+          "template": {
+            "type": "string",
+            "example": "/v1/edna/templates/uuid"
+          },
+          "subscription": {
+            "type": "string",
+            "example": "/v1/esma/subscriptions/uuid"
+          }
+        }
+      },
+      "NotificationItem": {
+        "properties": {
+          "kind": {
+            "type": "string",
+            "enum": ["SMS", "EMAIL"]
+          },
+          "defaultMessage": {
+            "type": "string",
+            "example": "Specific message by channel."
+          },
+          "mobileNumber": {
+            "type": "string",
+            "example": "+61 491 570 110"
+          },
+          "emailAddress": {
+            "type": "string",
+            "example": "info@ellenex.com"
+          }
+        }
+      },
+      "Observation": {
+        "type": "object",
+        "properties": {
+          "@context": {
+            "type": "string",
+            "example": "https://schema.ellenex.com/v1/context.jsonld"
+          },
+          "@type": {
+            "type": "string",
+            "example": "Observation"
+          },
+          "device": {
+            "type": "string",
+            "example": "/v1/edi/devices/uuid"
+          },
+          "parameter": {
+            "type": "string",
+            "example": "pressure"
+          },
+          "result": {
+            "example": 1.324,
+            "oneOf": [
+              {
+                "type": "string",
+                "example": "low"
+              },
+              {
+                "type": "number",
+                "example": 1.324
+              },
+              {
+                "type": "boolean",
+                "example": true
+              }
+            ]
+          },
+          "resultTime": {
+            "type": "string",
+            "description": "ISO-8601 format date-time that indicates when the result was captured",
+            "format": "date-time",
+            "example": "2018-10-20T18:51:13+00:05Z"
+          },
+          "location": {
+            "$ref": "#/components/schemas/Place"
+          },
+          "tags": {
+            "type": "object",
+            "example": {
+              "unit": "m",
+              "range": 2
+            }
+          }
+        }
+      },
+      "Forecast": {
+        "type": "object",
+        "properties": {
+          "@context": {
+            "type": "string",
+            "example": "https://schema.ellenex.com/v1/context.jsonld"
+          },
+          "@type": {
+            "type": "string",
+            "example": "Forecast"
+          },
+          "device": {
+            "type": "string",
+            "example": "/v1/edi/devices/uuid"
+          },
+          "parameter": {
+            "type": "string",
+            "example": "pressure"
+          },
+          "result": {
+            "example": 1.324,
+            "oneOf": [
+              {
+                "type": "string",
+                "example": "low"
+              },
+              {
+                "type": "number",
+                "example": 1.324
+              },
+              {
+                "type": "boolean",
+                "example": true
+              }
+            ]
+          },
+          "resultTime": {
+            "type": "string",
+            "description": "ISO-8601 format date-time that indicates when the result was captured",
+            "format": "date-time",
+            "example": "2018-10-20T18:51:13+00:05"
+          },
+          "location": {
+            "$ref": "#/components/schemas/Place"
+          },
+          "tags": {
+            "type": "object",
+            "example": {
+              "unit": "m",
+              "range": 2
+            }
+          },
+          "geoShape": {
+            "type": "object",
+            "properties": {
+              "@type": {
+                "type": "string",
+                "example": "GeoShape"
+              },
+              "box": {
+                "type": "string",
+                "description": "A box is the area enclosed by the rectangle formed by two points. The first point is the lower corner, the second point is the upper corner. A box is expressed as two points separated by a space character.",
+                "example": "10,10 100,150"
+              },
+              "circle": {
+                "type": "string",
+                "description": "A circle is the circular region of a specified radius centered at a specified latitude and longitude. A circle is expressed as a pair followed by a radius in meters.",
+                "example": "-37.867179,144.887433 150"
+              },
+              "polygon": {
+                "type": "string",
+                "description": "A polygon is the area enclosed by a point-to-point path for which the starting and ending points are the same. A polygon is expressed as a series of four or more space delimited points where the first and final points are identical.",
+                "example": "100.0,0.0 101.0,0.0 101.0,1.0 100.0,1.0 100.0,0.0"
+              }
+            }
+          }
+        }
+      },
+      "EQL": {
+        "properties": {
+          "@context": {
+            "type": "string",
+            "example": "https://schema.ellenex.com/v1/context.jsonld"
+          },
+          "@type": {
+            "type": "string",
+            "example": "EQL"
+          },
+          "kind": {
+            "type": "string",
+            "enum": ["Aggregation", "Raw"]
+          },
+          "granularity": {
+            "description": "duration of aggregation over time, which is either number of seconds or string representation of a time duration",
+            "example": "day",
+            "oneOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "string",
+                "enum": [
+                  "second",
+                  "minute",
+                  "hour",
+                  "day",
+                  "week",
+                  "month",
+                  "quarter",
+                  "year"
+                ]
+              }
+            ]
+          },
+          "dimensions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "example": ["resultTime", "device", "pressure"],
+            "description": "determines which data to fetch and how data gets bucketed across time dimension"
+          },
+          "aggregations": {
+            "type": "array",
+            "description": "defines data grouping method over time",
+            "items": {
+              "$ref": "#/components/schemas/Aggregation"
+            }
+          },
+          "filter": {
+            "$ref": "#/components/schemas/Filter"
+          },
+          "intervals": {
+            "type": "string",
+            "description": "representing ISO-8601 intervals. This defines the time ranges to run the query over separated by slash.",
+            "example": "2017-01-01T00:00:00.000/2018-01-01T00:00:00.000"
+          }
+        }
+      },
+      "Filter": {
+        "description": "indicates which rows of data should be included in the computation of a query. Essentially, the equivalent of WHERE clause in SQL.",
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "Filter"
+          },
+          "kind": {
+            "type": "string",
+            "enum": ["and", "or"],
+            "example": "and"
+          },
+          "fields": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FieldComparison"
+            }
+          }
+        }
+      },
+      "Aggregation": {
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "Aggregation"
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "count",
+              "max",
+              "min",
+              "avg",
+              "mean",
+              "median",
+              "sum",
+              "first",
+              "last"
+            ],
+            "example": "max"
+          },
+          "name": {
+            "type": "string",
+            "description": "name of output result",
+            "example": "max_pressure"
+          },
+          "dimension": {
+            "type": "string",
+            "description": "name of measurement field",
+            "example": "pressure"
+          }
+        }
+      },
+      "FieldComparison": {
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "FieldComparison"
+          },
+          "kind": {
+            "type": "string",
+            "enum": ["eq", "gt", "gte", "lt", "lte"],
+            "example": "eq"
+          },
+          "dimension": {
+            "type": "string",
+            "example": "range"
+          },
+          "value": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              }
+            ],
+            "example": 2
+          }
+        }
+      },
+      "EQLResult": {
+        "properties": {
+          "@context": {
+            "type": "string",
+            "example": "https://schema.ellenex.com/v1/context.jsonld"
+          },
+          "@type": {
+            "type": "string",
+            "example": "EQLResult"
+          },
+          "columns": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "example": ["resultTime", "device", "max_pressure"]
+          },
+          "values": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "oneOf": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "boolean"
+                  },
+                  {
+                    "type": "string"
+                  }
+                ]
+              }
+            },
+            "example": [
+              ["2017-01-01T00:00:00.000Z", "/v1/edi/devices/uuid1", 1300],
+              ["2017-01-01T00:00:00.000Z", "/v1/edi/devices/uuid2", 1400]
+            ]
+          }
+        }
+      },
+      "User": {
+        "required": ["@id"],
+        "properties": {
+          "@context": {
+            "type": "string",
+            "example": "https://schema.ellenex.com/v1/context.jsonld"
+          },
+          "@type": {
+            "type": "string",
+            "example": "User"
+          },
+          "@id": {
+            "type": "string",
+            "example": "/v1/esma/users/uuid"
+          },
+          "name": {
+            "type": "string",
+            "example": "John Doe"
+          },
+          "email": {
+            "type": "string",
+            "example": "Johndoe@gmail.com"
+          },
+          "mobile": {
+            "type": "string",
+            "example": "+61 412 345 678"
+          },
+          "hasAccessTo": {
+            "type": "array",
+            "example": ["/subscriptions/uuid1", "/subscriptions/uuid2"]
+          },
+          "notificationChannels": {
+            "type": "array",
+            "example": ["sms", "email"]
+          }
+        }
+      },
+      "Users": {
+        "required": ["@id"],
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "Collection"
+          },
+          "@id": {
+            "type": "string",
+            "example": "/v1/esma/users"
+          },
+          "totalItems": {
+            "type": "number",
+            "format": "int64",
+            "example": 1
+          },
+          "member": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/User"
+            }
+          },
+          "view": {
+            "$ref": "#/components/schemas/PartialUserView"
+          }
+        }
+      },
+      "PartialUserView": {
+        "required": ["@id"],
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "PartialCollectionView"
+          },
+          "@id": {
+            "type": "string",
+            "example": "/v1/esma/users?page=1"
+          },
+          "first": {
+            "type": "string",
+            "example": "/v1/esma/users?page=1"
+          },
+          "previous": {
+            "type": "string",
+            "example": "/v1/esma/users?page=1"
+          },
+          "next": {
+            "type": "string",
+            "example": "/v1/esma/users?page=1"
+          },
+          "last": {
+            "type": "string",
+            "example": "/v1/esma/users?page=1"
+          }
+        }
+      },
+      "Subscription": {
+        "required": ["@id"],
+        "properties": {
+          "@context": {
+            "type": "string",
+            "example": "https://schema.ellenex.com/v1/context.jsonld"
+          },
+          "@type": {
+            "type": "string",
+            "example": "Subscription"
+          },
+          "@id": {
+            "type": "string",
+            "example": "/v1/esma/subscriptions/uuid"
+          },
+          "name": {
+            "type": "string",
+            "example": "Subscription1"
+          },
+          "owner": {
+            "type": "string",
+            "example": "/v1/esma/users/uuid"
+          }
+        }
+      },
+      "Subscriptions": {
+        "required": ["@id"],
+        "properties": {
+          "@context": {
+            "type": "string",
+            "example": "https://schema.ellenex.com/v1/context.jsonld"
+          },
+          "@type": {
+            "type": "string",
+            "example": "Collection"
+          },
+          "@id": {
+            "type": "string",
+            "example": "/v1/esma/users"
+          },
+          "totalItems": {
+            "type": "number",
+            "format": "int64",
+            "example": 1
+          },
+          "member": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Subscription"
+            }
+          },
+          "view": {
+            "$ref": "#/components/schemas/PartialSubscriptionView"
+          }
+        }
+      },
+      "PartialSubscriptionView": {
+        "required": ["@id"],
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "PartialCollectionView"
+          },
+          "@id": {
+            "type": "string",
+            "example": "/v1/esma/subscriptions?page=1"
+          },
+          "first": {
+            "type": "string",
+            "example": "/v1/esma/subscriptions?page=1"
+          },
+          "previous": {
+            "type": "string",
+            "example": "/v1/esma/subscriptions?page=1"
+          },
+          "next": {
+            "type": "string",
+            "example": "/v1/esma/subscriptions?page=1"
+          },
+          "last": {
+            "type": "string",
+            "example": "/v1/esma/subscriptions?page=1"
+          }
+        }
+      }
+    }
+  }
+}
